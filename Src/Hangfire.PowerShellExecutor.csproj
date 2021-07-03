@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <Description>A plugin for Hangfire that allows you to easily launch your powershell scripts.</Description>
+    <PackageTags>hangfire manual jobs</PackageTags>
+    <Authors>Thomas ILLIET</Authors>
+    <PackageProjectUrl>https://github.com/thomas-illiet/Hangfire.PowerShellExecutor</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Thomas ILLIET</Copyright>
+    <RepositoryUrl>https://github.com/thomas-illiet/Hangfire.PowerShellExecutor</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Console" Version="1.4.2" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.24" />
+  </ItemGroup>
+
+</Project>

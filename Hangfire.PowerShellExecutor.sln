@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangfire.PowerShellExecutor", "Src\Hangfire.PowerShellExecutor.csproj", "{79A5C899-D651-4127-8F5D-C9CB5F703906}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79A5C899-D651-4127-8F5D-C9CB5F703906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A5C899-D651-4127-8F5D-C9CB5F703906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79A5C899-D651-4127-8F5D-C9CB5F703906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79A5C899-D651-4127-8F5D-C9CB5F703906}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91D57223-2BD3-4F14-A337-D70262CB46D6}
+	EndGlobalSection
+EndGlobal

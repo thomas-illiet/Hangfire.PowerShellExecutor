@@ -5,7 +5,7 @@
 
 A plugin for Hangfire that allows you to easily launch your powershell scripts.
 
-Read about hangfire here: https://github.com/HangfireIO/Hangfire#hangfire-and here: http://hangfire.io/
+Read about hangfire here: <https://github.com/HangfireIO/Hangfire#hangfire-and> here: <http://hangfire.io>
 
 ## Instructions
 
