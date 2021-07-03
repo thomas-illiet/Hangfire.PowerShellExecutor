@@ -22,7 +22,7 @@ jobs:
         run: dotnet test --no-build --verbosity normal --configuration Release
 
       - name: Pack
-        run: dotnet pack ./src/Hangfire.PowerShellExecutor.csproj --output nupkgs --no-build --configuration Release -p:PackageVersion=${{ github.event.release.tag_name }}
+        run: dotnet pack ./Src/Hangfire.PowerShellExecutor.csproj --output Nupkgs --no-build --configuration Release -p:PackageVersion=${{ github.event.release.tag_name }}
 
       - name: Push
-        run: dotnet nuget push ./nupkgs/Hangfire.PowerShellExecutor.${{ github.event.release.tag_name }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ./Nupkgs/Hangfire.PowerShellExecutor.${{ github.event.release.tag_name }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
