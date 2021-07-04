@@ -2,6 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/vpre/Hangfire.PowerShellExecutor)](https://www.nuget.org/packages/Hangfire.PowerShellExecutor/)
 [![NuGet](https://img.shields.io/nuget/dt/Hangfire.PowerShellExecutor)](https://www.nuget.org/packages/Hangfire.PowerShellExecutor/)
+[![CodeQL](https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/actions/workflows/codeql-analysis.yml)
 ![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)
 
 A plugin for Hangfire that allows you to easily launch your powershell scripts.
