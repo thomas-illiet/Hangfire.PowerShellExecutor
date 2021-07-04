@@ -2,6 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/vpre/Hangfire.PowerShellExecutor)](https://www.nuget.org/packages/Hangfire.PowerShellExecutor/)
 [![NuGet](https://img.shields.io/nuget/dt/Hangfire.PowerShellExecutor)](https://www.nuget.org/packages/Hangfire.PowerShellExecutor/)
+[![Tests](https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/actions/workflows/build-and-test.yml)
 [![CodeQL](https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/thomas-illiet/Hangfire.PowerShellExecutor/actions/workflows/codeql-analysis.yml)
 ![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)
 
