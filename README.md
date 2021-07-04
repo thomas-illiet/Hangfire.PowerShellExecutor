@@ -1,4 +1,4 @@
-# Hangfire.PowerShellExecutor
+# <img align="center" style="height:80px;margin-right:10px" src="https://raw.githubusercontent.com/thomas-illiet/Hangfire.PowerShellExecutor/main/Icon.png"/> PowerShellExecutor
 
 [![NuGet](https://img.shields.io/nuget/vpre/Hangfire.PowerShellExecutor)](https://www.nuget.org/packages/Hangfire.PowerShellExecutor/)
 [![NuGet](https://img.shields.io/nuget/dt/Hangfire.PowerShellExecutor)](https://www.nuget.org/packages/Hangfire.PowerShellExecutor/)
