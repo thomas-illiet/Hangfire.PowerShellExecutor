@@ -10,6 +10,8 @@ A plugin for Hangfire that allows you to easily launch your powershell scripts.
 
 ![dashboard](Assets/Dashboard.png)
 
+*In this screenshot i'm using [MissionControl](https://github.com/ahydrax/Hangfire.MissionControl) to facilitate the creation of jobs.*
+
 Read about hangfire here: <https://github.com/HangfireIO/Hangfire> here: <http://hangfire.io>
 
 ## Features
