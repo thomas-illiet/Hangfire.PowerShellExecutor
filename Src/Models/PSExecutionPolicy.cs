@@ -1,6 +1,6 @@
 ﻿namespace Hangfire.PowerShellExecutor
 {
-    public enum ExecutionPolicy
+    public enum PSExecutionPolicy
     {
         AllSigned,
         Bypass,
