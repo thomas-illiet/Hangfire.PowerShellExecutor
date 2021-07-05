@@ -8,6 +8,8 @@
 
 A plugin for Hangfire that allows you to easily launch your powershell scripts.
 
+![dashboard](Assets/Dashboard.png)
+
 Read about hangfire here: <https://github.com/HangfireIO/Hangfire> here: <http://hangfire.io>
 
 ## Features
