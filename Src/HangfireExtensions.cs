@@ -6,7 +6,12 @@ namespace Hangfire.PowerShellExecutor
 {
     public static partial class HangfireExtensions
     {
-        public static IServiceCollection AddHangfirePSExecutorExtensions(this IServiceCollection services)
+        /// <summary>
+        /// Configures Hangfire to use PowerShell Executor.
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddPSExecutorExtensions(this IServiceCollection services)
         {
             services.AddSingleton<IPerformingContextAccessor, PerformingContextAccessor>();
             services.AddTransient<PSExecutor>((ctx) => GetPSExecutor(ctx));

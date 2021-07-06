@@ -13,12 +13,22 @@ namespace Hangfire.PowerShellExecutor
         private readonly IPerformingContextAccessor _performingContextAccessor;
         private readonly PerformContext _performContext;
 
+        /// <summary>
+        /// Default constructor for dependency injection.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="performingContextAccessor"></param>
         public PSExecutor(PSExecutorBuilder builder, IPerformingContextAccessor performingContextAccessor)
         {
             _builder = builder;
             _performingContextAccessor = performingContextAccessor;
         }
 
+        /// <summary>
+        /// Manufacturer for manual use.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="performContext"></param>
         public PSExecutor(PSExecutorBuilder builder, PerformContext performContext)
         {
             _builder = builder;
