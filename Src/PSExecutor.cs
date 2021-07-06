@@ -12,6 +12,7 @@ namespace Hangfire.PowerShellExecutor
         private readonly PSExecutorBuilder _builder;
         private readonly IPerformingContextAccessor _performingContextAccessor;
         private readonly PerformContext _performContext;
+        private bool ErrorReceived;
 
         /// <summary>
         /// Default constructor for dependency injection.
@@ -79,9 +80,10 @@ namespace Hangfire.PowerShellExecutor
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
             process.WaitForExit();
-
-            // Close the process
             process.Close();
+
+            if (ErrorReceived)
+                throw new ApplicationException("An error occurred while executing the process.");
         }
 
         /// <summary>
@@ -135,6 +137,7 @@ namespace Hangfire.PowerShellExecutor
         {
             if (message != null)
             {
+                ErrorReceived = true;
                 _builder.CaptureOutput?.Invoke(message);
                 context.SetTextColor(ConsoleTextColor.Red);
                 context.WriteLine(RemoveSensitiveData(message));
