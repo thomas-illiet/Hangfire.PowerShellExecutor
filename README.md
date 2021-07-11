@@ -29,9 +29,10 @@ public void ConfigureServices(IServiceCollection services)
 {
     services.AddHangfire(config =>
     {
-        config.UseSqlServerStorage("connectionSting");
+        config.UseMemoryStorage();
         config.UseConsole();
     });
+    services.AddPSExecutorExtensions();
 }
 ```
 
@@ -39,54 +40,92 @@ Otherwise,
 
 ```c#
 GlobalConfiguration.Configuration
-    .UseSqlServerStorage("connectionSting")
+    .UseMemoryStorage()
     .UseConsole();
+services.AddPSExecutorExtensions();
 ```
 
-**NOTE**: If you have Dashboard and Server running separately, 
-you'll need to call `UseConsole()` on both.
+**NOTE**: If you have Dashboard and Server running separately, you'll need to call `UseConsole()` on both.
 
 ## Example
 
 ```C#
-using Hangfire.Console;
+using Hangfire.MissionControl;
 using Hangfire.Server;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace Hangfire.PowerShellExecutor.Jobs
+namespace Hangfire.PowerShellExecutor.Test
 {
-    public class PowerShellJob
+    [MissionLauncher(CategoryName = "TestSuite")]
+    public class TestSuite
     {
-        public async Task ExecuteAsync(PerformContext context, CancellationToken cancellationToken)
+        private readonly PSExecutorBuilder _executorBuilder;
+
+        public TestSuite (PSExecutorBuilder executorBuilder)
         {
-            context.SetTextColor(ConsoleTextColor.Green);
-            context.WriteLine("*****************************************************************");
-            context.WriteLine("Starting: Hangfire Script");
-            context.WriteLine("*****************************************************************");
-            context.ResetTextColor();
+            _executorBuilder = executorBuilder;
+        }
 
-            // Create an instance of the configuration
-            var psConfig = new PsExecutorConfig();
-            // Define the execution policy
-            psConfig.SetExecutionPolicy(ExecutionPolicy.Bypass);
-            // Add parameters
-            psConfig.AddSecret("PE_SUPERSECRET", "P@ssw0rd");
-            psConfig.AddParameter("PE_PARAMETER01", "parameter01");
-            psConfig.AddParameter("PE_PARAMETER02", "parameter02");
-            // Set the location of the powershell script
-            psConfig.SetScriptPath(@"D:\Scripts\Get-ChildItem.ps1");
-            // Execute the powershell script
-            context.StartProcess(psConfig, cancellationToken);
+        public void WithInjection(PerformContext context, CancellationToken cancellationToken)
+        {
+            var localProcess = _executorBuilder
+                .SetCommand("Get-ChildItem")
+                .SetExecutionPolicy(PSExecutionPolicy.Bypass)
+                .Build();
+            localProcess.Start(cancellationToken);
+        }
 
-            context.WriteLine("");
-            context.SetTextColor(ConsoleTextColor.Green);
-            context.WriteLine("*****************************************************************");
-            context.WriteLine("Finishing: Hangfire Script");
-            context.WriteLine("*****************************************************************");
+        public void WithoutInjection(PerformContext context, CancellationToken cancellationToken)
+        {
+            var localProcess = new PSExecutorBuilder(context)
+                .SetCommand("Get-ChildItem")
+                .SetExecutionPolicy(PSExecutionPolicy.Bypass)
+                .Build();
+            localProcess.Start(cancellationToken);
+        }
+
+        public void WithParameter(PerformContext context, CancellationToken cancellationToken)
+        {
+            var localProcess = new PSExecutorBuilder(context)
+                .AddParameter("PE_TEST01", "TEST01")
+                .AddParameter("PE_TEST02", "TEST02")
+                .SetCommand("Get-ChildItem -Path Env:")
+                .SetExecutionPolicy(PSExecutionPolicy.Bypass)
+                .Build();
+            localProcess.Start(cancellationToken);
+        }
+
+        public void WithSecret(PerformContext context, CancellationToken cancellationToken)
+        {
+            var localProcess = new PSExecutorBuilder(context)
+                .AddSecret("PE_TEST01", "8SE2vsPH$AZrGHq4u*t")
+                .AddSecret("PE_TEST02", "xr^!!DjA7C**7YyH%AF")
+                .SetCommand("Get-ChildItem -Path Env:")
+                .SetExecutionPolicy(PSExecutionPolicy.Bypass)
+                .Build();
+            localProcess.Start(cancellationToken);
+        }
+
+        public void WithExternalFile(PerformContext context, CancellationToken cancellationToken)
+        {
+            var localProcess = new PSExecutorBuilder(context)
+                .SetFile(@"D:\Scripts\FileScript.ps1")
+                .SetExecutionPolicy(PSExecutionPolicy.Bypass)
+                .Build();
+            localProcess.Start(cancellationToken);
+        }
+
+        public void WithError(PerformContext context, CancellationToken cancellationToken)
+        {
+            var localProcess = new PSExecutorBuilder(context)
+                .SetCommand("Write-Error 'Test''")
+                .SetExecutionPolicy(PSExecutionPolicy.Bypass)
+                .Build();
+            localProcess.Start(cancellationToken);
         }
     }
 }
+
 ```
 
 ## License
