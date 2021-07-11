@@ -45,6 +45,32 @@ namespace Hangfire.PowerShellExecutor
             Parameters = new Dictionary<string, string>();
         }
 
+
+        /// <summary>
+        /// Sets the credentials to be used when starting the process.
+        /// </summary>
+        /// <param name="domain"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public PSExecutorBuilder RunAs(string domain, string username, string password)
+        {
+            Credential = new PSCredential(domain, username, password);
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the credentials to be used when starting the process.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public PSExecutorBuilder RunAs(string username, string password)
+        {
+            Credential = new PSCredential(username, password);
+            return this;
+        }   
+
         /// <summary>
         /// Sets the environment parameters to add to the process.
         /// </summary>
