@@ -30,6 +30,7 @@
     <PackageReference Include="Hangfire.Core" Version="1.7.29" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.4" />
   </ItemGroup>
 
 </Project>
